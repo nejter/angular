@@ -1,0 +1,23 @@
+body
+  h1= status
+  form(action='/movies', method='post')
+    h3 Add a movie
+    input(type='text', name='title' placeholder='title')
+    input(type='submit', value='Submit')
+
+
+
+
+- moviesdata = moviesdata || '';
+
+table(border='1')
+    tr
+    th Title
+    th Year
+    th Genre
+    tr
+    each val in moviesdata
+        td= val.moviedata.Title
+        td= val.moviedata.Year
+        td= val.moviedata.Genre
+        tr

@@ -1,0 +1,38 @@
+- commentsdata = commentsdata || '';
+- movieids = movieids || '';
+- allmovieids = allmovieids || '';
+
+body
+    h3 Add a comment
+    form(action='/comments', method='post')
+        | Movie
+        select(name='movieIds')
+            each val in allmovieids
+                option(value=val.id) #{val.moviedata.Title}
+        br
+        | Comment
+        input(type='text', name='comment' placeholder="Comment")
+        br
+        input(type='submit', value='Submit', name='addComment')
+
+
+    br
+h3 Sort comments by movie id
+form(action='/comments', method='post')
+    select(name='movieIdToFilter')
+        each val in movieids
+            option(value=val) #{val}
+    input(type='submit', value='Submit', name='filter')
+
+
+table(border='1')
+    tr
+    th Movie id
+    th Movie title
+    th Comment
+    tr
+    each val in commentsdata
+        td= val.movie_id
+        td= val.moviedata.Title
+        td= val.comment
+        tr
